@@ -14,21 +14,21 @@ public class LargestPalindrome {
      * @return the largest palindrome
      */
     public static int getLargestPalindrome() {
-        /**
-         * ArrayList of product of three digit numbers which are palindrome
-         */
-        ArrayList<Integer> numProduct = new ArrayList<>();
+
+        int largestPalindrome = 0;
 
         for (int i = 999; i > 100; i--) {
             for (int j = 999; j > 100; j--) {
                 int product = i * j;
 
-                if (isPalindrome(product))//check if palindrome
-                    numProduct.add(product);//add to the ArrayList
+                if (isPalindrome(product) && product > largestPalindrome) {
+                    largestPalindrome = product;
+                }
+
             }
         }
 
-        return Collections.max(numProduct);//return the largest palindrome in the ArrayList
+        return largestPalindrome;
     }
 
     /**
@@ -46,10 +46,7 @@ public class LargestPalindrome {
             sum = (sum * 10) + remainder;
             number = number / 10;
         }
-        if (temp == sum)
-            return true;
-        else
-            return false;
+        return temp == sum;
     }
 }
 
